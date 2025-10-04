@@ -49,12 +49,13 @@ document.getElementById("nextBtn").addEventListener("click", () => {
   renderTestimonial(currentIndex);
 });
 
+
 // our tech start
 
 const slider = document.getElementById('slider');
 
 let scrollAmount = 0;
-let maxScroll = slider.scrollWidth - slider.clientWidth;
+let maxScroll = 0;
 let speed = 1;
 let isPaused = false;
 
@@ -64,10 +65,7 @@ function autoScroll() {
     if (scrollAmount >= maxScroll) {
       scrollAmount = 0;
     }
-    slider.scrollTo({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
+    slider.scrollLeft = scrollAmount; // ✅ smooth & stable
   }
   requestAnimationFrame(autoScroll);
 }
@@ -81,13 +79,9 @@ window.onresize = () => {
   maxScroll = slider.scrollWidth - slider.clientWidth;
 };
 
-slider.addEventListener('mouseenter', () => {
-  isPaused = true;
-});
+slider.addEventListener('mouseenter', () => (isPaused = true));
+slider.addEventListener('mouseleave', () => (isPaused = false));
 
-slider.addEventListener('mouseleave', () => {
-  isPaused = false;
-});
 
 // our tech end
 
@@ -286,32 +280,32 @@ function hideMore() {
 // about us end
 
 // our tech
-function toggleCardContent(button) {
-  const card = button.closest('.card');
-  const extraInfo = card.querySelector('.extra-info');
-  const readMoreBtn = card.querySelector('.read-more-btn');
-  const desc = card.querySelector('.desc');
+// function toggleCardContent(button) {
+//   const card = button.closest('.card');
+//   const extraInfo = card.querySelector('.extra-info');
+//   const readMoreBtn = card.querySelector('.read-more-btn');
+//   const desc = card.querySelector('.desc');
 
-  if (extraInfo.classList.contains('hidden')) {
-    // Show extra info, hide description and Read more button
-    extraInfo.classList.remove('hidden');
-    desc.classList.remove('hidden');
-    readMoreBtn.classList.add('hidden');
-  } else {
-    // Hide extra info, show description and Read more button
-    extraInfo.classList.add('hidden');
-    desc.classList.remove('hidden');
-    readMoreBtn.classList.remove('hidden');
-  }
-}
+//   if (extraInfo.classList.contains('hidden')) {
+//     // Show extra info, hide description and Read more button
+//     extraInfo.classList.remove('hidden');
+//     desc.classList.remove('hidden');
+//     readMoreBtn.classList.add('hidden');
+//   } else {
+//     // Hide extra info, show description and Read more button
+//     extraInfo.classList.add('hidden');
+//     desc.classList.remove('hidden');
+//     readMoreBtn.classList.remove('hidden');
+//   }
+// }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".hereclick").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      console.log("hello you are ");
-    });
-  });
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   document.querySelectorAll(".hereclick").forEach((btn) => {
+//     btn.addEventListener("click", () => {
+//       console.log("hello you are ");
+//     });
+//   });
+// });
 
 // our services
 
@@ -352,3 +346,20 @@ document.addEventListener("DOMContentLoaded", () => {
    function closeMenu() {
     document.querySelector('.nav-menu').classList.remove('active');
   }
+
+
+  // our core values
+   document.querySelector('button[class*="fixed"]').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Add subtle parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.animate-float');
+            parallaxElements.forEach((el, index) => {
+                el.style.transform = `translateY(${scrolled * (0.1 + index * 0.05)}px)`;
+            });
+        });
+
+    
