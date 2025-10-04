@@ -280,32 +280,32 @@ function hideMore() {
 // about us end
 
 // our tech
-// function toggleCardContent(button) {
-//   const card = button.closest('.card');
-//   const extraInfo = card.querySelector('.extra-info');
-//   const readMoreBtn = card.querySelector('.read-more-btn');
-//   const desc = card.querySelector('.desc');
+function toggleCardContent(button) {
+  const card = button.closest('.card');
+  const extraInfo = card.querySelector('.extra-info');
+  const readMoreBtn = card.querySelector('.read-more-btn');
+  const desc = card.querySelector('.desc');
 
-//   if (extraInfo.classList.contains('hidden')) {
-//     // Show extra info, hide description and Read more button
-//     extraInfo.classList.remove('hidden');
-//     desc.classList.remove('hidden');
-//     readMoreBtn.classList.add('hidden');
-//   } else {
-//     // Hide extra info, show description and Read more button
-//     extraInfo.classList.add('hidden');
-//     desc.classList.remove('hidden');
-//     readMoreBtn.classList.remove('hidden');
-//   }
-// }
+  if (extraInfo.classList.contains('hidden')) {
+    // Show extra info, hide description and Read more button
+    extraInfo.classList.remove('hidden');
+    desc.classList.remove('hidden');
+    readMoreBtn.classList.add('hidden');
+  } else {
+    // Hide extra info, show description and Read more button
+    extraInfo.classList.add('hidden');
+    desc.classList.remove('hidden');
+    readMoreBtn.classList.remove('hidden');
+  }
+}
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   document.querySelectorAll(".hereclick").forEach((btn) => {
-//     btn.addEventListener("click", () => {
-//       console.log("hello you are ");
-//     });
-//   });
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".hereclick").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      console.log("hello you are ");
+    });
+  });
+});
 
 // our services
 
